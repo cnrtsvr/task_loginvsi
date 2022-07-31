@@ -14,16 +14,10 @@ export const mockProduct: Product = {
 
 export const initialState: AppState = {
   defaultTax: 21,
-  addedProducts: Array.from({length: 20}).map((_, index) => {
-    return {
-      ...mockProduct,
-      id: index + 1,
-      code: index + 1
-    };
-  }),
-  subTotal: 2000,
-  subTotalWithTax: 2420,
-  idCounter: 21
+  addedProducts: [],
+  subTotal: 0,
+  subTotalWithTax: 0,
+  idCounter: 1
 }
 
 export const reducer = createReducer(
