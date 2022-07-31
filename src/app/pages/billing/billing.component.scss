@@ -1,0 +1,66 @@
+@import "~/src/variables.scss";
+
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.billing {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  &__products {
+    height: calc(100% - 145px);
+    tbody tr td { height: 24px; }
+
+    &__code {
+      width: 120px;
+      text-align: center;
+    }
+
+    &__name {
+      text-align: start;
+    }
+
+    &__price {
+      width: 150px;
+      text-align: center;
+    }
+
+    &__tax {
+      width: 100px;
+      text-align: center;
+      padding-right: 16px;
+    }
+  }
+
+  &__total {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+    &__container {
+      width: fit-content;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      padding: 16px 24px;
+      &__row {
+        display: flex;
+        justify-content: space-between;
+        padding: 2px 0;
+        label {
+          margin-right: 16px;
+        }
+
+        &.line-row {
+          border-bottom: 1px solid $border-color;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    margin-top: auto;
+  }
+}

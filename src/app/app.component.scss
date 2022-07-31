@@ -1,0 +1,48 @@
+@import "~/src/variables.scss";
+
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: $text-color;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+header {
+  height: 48px;
+  border-bottom: 1px solid $border-color;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  span {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+main {
+  height: calc(100vh - 96px);
+  padding: 0 16px;
+}
+
+footer {
+  height: 48px;
+  border-top: 1px solid $border-color;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 12px;
+  }
+}

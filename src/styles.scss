@@ -1,0 +1,149 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "~/src/variables.scss";
+
+html, body {
+  margin: 0;
+}
+
+button {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: 1px solid $input-border-color;
+  font-weight: 700;
+  background: $white;
+  padding: 0 8px 1px;
+  font-size: 13px;
+  border-radius: 4px;
+  color: $text-color;
+  height: 28px;
+  transition: all 80ms linear;
+  &:hover {
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 8%);
+      background: rgba(248,248,248,1);
+  }
+
+  &.disabled {
+    background: rgba(0, 0, 0, 0.1);
+    color: $text-color-disabled;
+    cursor: default;
+  }
+
+  &.red-button {
+    background: #B91C1C;
+    border-color: #991B1B;
+    color: #F9FAFB;
+    &:hover {
+      background: #DC2626;
+    }
+  }
+}
+
+input {
+  border: 0;
+  outline: 0;
+  color: rgb(60, 66, 87);
+  background-color: $white;
+  box-shadow: $input-border-color 0px 0px 0px 1px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  padding: 4px 8px;
+  min-height: 28px;
+  vertical-align: middle;
+  transition: background-color .24s,box-shadow .24s;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.24s, 0.24s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
+  box-sizing: border-box;
+  &:focus{
+    box-shadow: rgb(148 162 255) 0px 0px 0px 1px;
+  }
+
+  &.ng-touched.ng-invalid {
+    box-shadow: #DC2626 0px 0px 0px 1px;
+  }
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  min-width: 768px;
+  border-spacing: 0;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  tr {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+  }
+
+  thead{
+    flex: 0 0 auto;
+    th {
+      border-bottom: 1px solid $border-color;
+      padding: 8px;
+      height: 18px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: $table-header-background;
+      border-right: 1px solid $table-header-cell-border-color;
+      &:last-child {
+        border-right: none;
+      }
+  
+      &:first-child {
+        border-top-left-radius: 4px;
+      }
+  
+      &:last-child {
+        border-top-right-radius: 4px;
+      }
+    }
+  }
+  
+  tbody {
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    td {
+      border-bottom: 1px solid $table-cell-border-color;
+      border-right: 1px solid $table-cell-border-color;
+      padding: 8px;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+  
+  tfoot {
+    td {
+      border-top: 1px solid $border-color;
+      text-align: center;
+      padding: 8px;
+      height: 18px;
+      font-weight: bold;
+      background-color: $table-header-background;
+  
+      &:first-child {
+        border-bottom-left-radius: 4px;
+      }
+  
+      &:last-child {
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+}

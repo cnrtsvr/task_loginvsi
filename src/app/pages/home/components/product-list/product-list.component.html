@@ -1,0 +1,58 @@
+<div class="product-list">
+  <div class="product-list__actions-row">
+    <div class="product-list__actions__modify-tax">
+      <ng-container *ngIf="!isEditTaxActive; else taxForm">
+        <button (click)="handleEditTaxClick()">Modify default tax</button>
+      </ng-container>
+    </div>
+    <ng-template #taxForm>
+      <input type="text" [formControl]="taxControl">
+      <button [ngClass]="{ disabled: !taxControl.valid }" (click)="handleSaveDefaultTax()"><i class="icon bi-check-lg"></i></button>
+      <button class="red-button" (click)="handleCancelEditTax()"><i class="icon bi-x-lg"></i></button>
+    </ng-template>
+    <button (click)="handleAddButtonClick()">Add new product</button>
+  </div>
+  <table class="product-list__table">
+    <thead class="product-list__header">
+      <tr>
+        <th class="product-list__header__data">Code</th>
+        <th class="product-list__header__data">Name</th>
+        <th class="product-list__header__data">Price (EUR)</th>
+        <th class="product-list__header__data">Price + Tax (EUR)</th>
+        <th class="product-list__header__data">Tax Percentage</th>
+        <th class="product-list__header__actions"></th>
+      </tr>
+    </thead>
+    <tbody class="product-list__body">
+      <tr task-product-row
+        *ngIf="isAddingProduct"
+        [product]="undefined"
+        (editSaved)="handleNewProductAdded($event)"
+        (editCancelled)="handleNewProductCancelled()"
+      ></tr>
+      <tr task-product-row
+        *ngFor="let product of products"
+        [product]="product"
+        (editSaved)="handleProductEdited($event)"
+        (productRemoved)="handleProductRemoved($event)"
+      >
+      </tr>
+    </tbody>
+    <tfoot class="product-list__footer">
+      <tr>
+        <td>
+          Subtotal:
+        </td>
+        <td></td>
+        <td>
+          {{ subTotal | currency }}
+        </td>
+        <td>
+          {{ subTotalWithTax | currency }}
+        </td>
+        <td></td>
+        <td class="product-list__footer__actions"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

@@ -1,0 +1,42 @@
+<ng-container *ngIf="!isEditActive; else editActive">
+  <td class="product-row__cell__data">
+    <span>{{product?.code ?? "-"}}</span>
+  </td>
+  <td class="product-row__cell__data">
+    <span>{{product?.name ?? "-"}}</span>
+  </td>
+  <td class="product-row__cell__data">
+    <span>{{ product ? (product.basePrice | currency) : "-"}}</span>
+  </td>
+  <td class="product-row__cell__data">
+    <span>{{ product ? (getPriceWithTax(product) | currency) : "-" }}</span>
+  </td>
+  <td class="product-row__cell__data">
+    <span>{{ product ? ((getTaxPercentage(product) / 100) | percent) : "-"}}</span>
+  </td>
+  <td class="product-row__cell__actions">
+    <button (click)="handleEditClicked()"><i class="icon bi-gear-wide"></i></button>
+    <button class="red-button" (click)="handleRemoveClicked()"><i class="icon bi-trash"></i></button>
+  </td>
+</ng-container>
+<ng-template #editActive>
+  <td class="product-row__cell__data">
+    <input [formControl]="productForm.controls.code" type="text" [value]="product?.code">
+  </td>
+  <td class="product-row__cell__data">
+    <input [formControl]="productForm.controls.name" type="text" [value]="product?.name">
+  </td>
+  <td class="product-row__cell__data">
+    <input [formControl]="productForm.controls.price" type="text" [value]="product?.basePrice">
+  </td>
+  <td class="product-row__cell__data">
+    <span>{{ product ? (getPriceWithTax(product) | currency) : "-" }}</span>
+  </td>
+  <td class="product-row__cell__data">
+    <input [formControl]="productForm.controls.tax" type="text" [value]="product?.customTax">
+  </td>
+  <td class="product-row__cell__actions">
+    <button [ngClass]="{ disabled: !isFormValid() }" (click)="handleEditSaved()"><i class="icon bi-check-lg"></i></button>
+    <button class="red-button" (click)="handleEditCancelled()"><i class="icon bi-x-lg"></i></button>
+  </td>
+</ng-template>

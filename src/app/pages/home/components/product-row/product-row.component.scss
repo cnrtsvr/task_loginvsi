@@ -1,0 +1,22 @@
+@import "~/src/variables.scss";
+
+.product-row__cell {
+  &__data {
+    text-align: center;
+    input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    height: 28px;
+  }
+
+  &__actions {
+    width: 80px;
+    button {
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

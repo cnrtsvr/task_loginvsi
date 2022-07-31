@@ -1,0 +1,40 @@
+<div class="billing">
+  <table class="billing__products">
+    <thead>
+      <tr>
+        <th class="billing__products__code">Product Code</th>
+        <th class="billing__products__name">Name</th>
+        <th class="billing__products__price">Price</th>
+        <th class="billing__products__tax">Eff. Tax</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of addedProducts">
+        <td class="billing__products__code">{{ product.code }}</td>
+        <td class="billing__products__name">{{ product.name }}</td>
+        <td class="billing__products__price">{{ product.basePrice | currency }}</td>
+        <td class="billing__products__tax">{{ getEffectiveTax(product) | percent }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="billing__total">
+    <div class="billing__total__container">
+      <div class="billing__total__container__row">
+        <label for="subTotal">Sub Total:</label>
+        <span id="subTotal">{{ subTotal | currency }}</span>
+      </div>
+      <div class="billing__total__container__row">
+        <label for="tax">Tax:</label>
+        <span id="tax">{{ (subTotalWithTax - subTotal) | currency }}</span>
+      </div>
+      <div class="billing__total__container__row line-row"></div>
+      <div class="billing__total__container__row">
+        <label for="total">Total:</label>
+        <span id="total">{{ subTotalWithTax | currency }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="billing__actions">
+    <button (click)="handleClickBack()">Back</button>
+  </div>
+</div>
