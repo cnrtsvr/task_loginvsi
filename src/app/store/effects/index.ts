@@ -12,7 +12,9 @@ export class AppEffects {
           actions.addProduct,
           actions.updateProduct,
           actions.removeProduct,
-          actions.setDefaultTax
+          actions.setDefaultTax,
+          actions.setTestData,
+          actions.clearTestData
         ),
         map(actions.calculateSubTotal)
       )
@@ -26,7 +28,9 @@ export class AppEffects {
           actions.addProduct,
           actions.updateProduct,
           actions.removeProduct,
-          actions.setDefaultTax
+          actions.setDefaultTax,
+          actions.setTestData,
+          actions.clearTestData
         ),
         map(actions.calculateSubTotalWithTax)
       )

@@ -7,7 +7,9 @@ enum Actions {
     CALCULATE_SUB_TOTAL_WITH_TAX = "[APP] Calculate Subtotal With Tax",
     ADD_PRODUCT = "[APP] Add Product",
     REMOVE_PRODUCT = "[APP] Remove Product",
-    UPDATE_PRODUCT = "[APP] Update Product"
+    UPDATE_PRODUCT = "[APP] Update Product",
+    SET_TEST_DATA = "[TEST] Set Test Data",
+    CLEAR_TEST_DATA = "[TEST] Clear Test Data"
 }
 
 export const setDefaultTax = createAction(
@@ -36,4 +38,12 @@ export const removeProduct = createAction(
 export const updateProduct = createAction(
     Actions.UPDATE_PRODUCT,
     props<{ product: Product }>()
+)
+
+export const setTestData = createAction(
+    Actions.SET_TEST_DATA
+)
+
+export const clearTestData = createAction(
+    Actions.CLEAR_TEST_DATA
 )

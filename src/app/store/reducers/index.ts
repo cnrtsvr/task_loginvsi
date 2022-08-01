@@ -12,6 +12,19 @@ export const mockProduct: Product = {
   totalPrice: 121
 }
 
+const createTestData = (length: number): Product[] => {
+  return Array.from({ length }).map((_, index) => {
+    return {
+      id: index + 1,
+      name: `Test Product${index !== 0 ? ` ${index}` : ""}`,
+      basePrice: 100,
+      code: index + 1001,
+      customTax: null,
+      totalPrice: 121
+    };
+  })
+}
+
 export const initialState: AppState = {
   defaultTax: 21,
   addedProducts: [],
@@ -97,6 +110,27 @@ export const reducer = createReducer(
       return {
         ...state,
         defaultTax
+      };
+    }
+  ),
+  on(
+    Actions.setTestData,
+    (state) => {
+      const testData = createTestData(20);
+      return {
+        ...state,
+        addedProducts: testData,
+        idCounter: 21
+      };
+    }
+  ),
+  on(
+    Actions.clearTestData,
+    (state) => {
+      return {
+        ...state,
+        addedProducts: [],
+        idCounter: 1
       };
     }
   )
